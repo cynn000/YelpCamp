@@ -1,0 +1,72 @@
+<!--Index Template for viewing All Campgrounds -->
+
+<!-- pass the body through to our layout -->
+<!-- all content below will be passed to our boilerplate template 
+     as body and it will be inserted where body is boilerplate
+-->
+<!-- access layout folder and boilerplate.ejs -->
+<%layout("layouts/boilerplate")%>
+
+<!-- cluster map from mapbox -->
+<div id="cluster-map"></div>
+
+<h1 class="mt-4 mb-4">All Campgrounds</h1>
+
+<!-- iterate over all campgrounds and display all fields -->
+<% for (let campground of campgrounds) { %>
+<!-- each title is a link that leads to the Show page, that views a single campground using it's id-->
+<div class="card mb-3">
+    <div class="row">
+        <!-- take up 4 units out of 12 one-third -->
+        <div class="col-md-4">
+            <!-- if there are any images -->
+            <% if (campground.images.length) { %> 
+            <!-- display the first image in the images array -->
+            <img class="img-fluid" alt="" src="<%=campground.images[0].url%>">
+            <% } else { %> 
+                <!-- display default generic image -->
+                <img class="img-fluid" alt="" src="https://res.cloudinary.com/dhmxqcqer/image/upload/v1645945634/YelpCamp/campground_ikjiib.jpg">
+            <% } %> 
+        </div>
+        <!-- takes up the other two-thirds -->
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title"><%=campground.title%></h5>
+                <p class="card-text"><%=campground.description%></p>
+                <p class="card-text"> 
+                    <!-- text-muted us gives greyed-out text-->
+                    <small class="text-muted"><%=campground.location%> </small>
+                </p>
+                <a href="/campgrounds/<%=campground._id%>" class="btn btn-primary">View <%=campground.title%> </a>
+            </div>
+        </div>
+    </div>
+</div>
+<% } %>
+
+<!-- 
+ use ejs to create a js variable what we have access to in our js file
+ hand data off from the server side to the client side
+ need to get access to token in a .ejs file to .js file
+ pass through all campgrounds, then will have access to that immediately on the client side
+ just like in show.ejs
+-->
+<!--
+ This example visualizes all M1.0+ earthquakes
+ from 12/22/15 to 1/21/16 as logged by USGS' Earthquake hazards program.
+ data: 'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson'
+ when we use our data set, the map did not display anything
+ previous earthquake data used, everything was located under a key of features
+ our data is not located under a key of features, it is just an array
+ Mapbox expects an object with the key of features set to an array will all of the data
+ we can fix this by making our data conform to that pattern
+ set campgrounds to an object with features that equals all of our campgrounds
+ now it matches the earthquake dataset
+-->
+<script>
+    const mapToken = "<%-process.env.MAPBOX_TOKEN%>";
+    const campgrounds = {features: <%-JSON.stringify(campgrounds) %>};
+</script>
+
+<!-- include script for cluster map from mapbox -->
+<script src="/javascripts/clusterMap.js"></script>

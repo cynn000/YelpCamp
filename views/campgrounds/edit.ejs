@@ -1,0 +1,115 @@
+<!-- Edit Tempate for editing a campground-->
+
+<!-- access layout folder and boilerplate.ejs -->
+<%layout("layouts/boilerplate")%>
+
+<div class="row mb-3">
+    <h1 class="text-center">Edit Campground</h1>
+    <!-- want 6 units and in the middle so offset by 3 -->
+        <div class="col-md-6 offset-md-3">
+        <!-- remember forms only send a GET or POST request from the browser 
+        so we have to fake it by doing a put, patch, delete with method override
+        _method is the query string and request we are overriding it is PUT
+        -->
+        <!-- novalidate to prevent HTML browser from doing validation handling, will be doing that with Bootstrap-->
+        <!-- if we want to upload files we need to set the encoding type or enctype attribute to be multipart/form-data -->
+        <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+        
+            <!-- prepopulate values for title and location with value=""-->
+            <!-- Title -->
+            <div class="mb-3">
+                <label class="form-label" for="title">Title</label>
+                <!-- campground[title] groups things under campground, groups content together -->
+                <!-- when our data is sent via POST request to our express app, -->
+                <!-- everything in the request.body will be stored under campground -->
+                <!-- required for error handling client side validation -->
+                <input class="form-control" type="text" name="campground[title]" id="title" value="<%=campground.title%>" required>
+                
+                <!-- success text for valid input of form -->
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <!-- Location -->
+            <div class="mb-3">
+                <label class="form-label" for="location">Location</label>
+                <!-- campground[location] groups things under campground, groups content together -->
+                <input class="form-control" type="text" name="campground[location]" id="location" value="<%=campground.location%>" required>
+                
+                <!-- success text for valid input of form -->
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <!-- Price -->
+            <div class="mb-3">
+                <label class="form-label" for="price">Campground Price</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="price-label">$</span>
+                    <input type="text" class="form-control" name="campground[price]" id="price" placeholder="0.00" aria-label="price" aria-describedby="price-label" value="<%=campground.price%>" required>
+                </div>
+
+                <!-- success text for valid input of form -->
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-3">
+                <label class="form-label" for="description">Description</label>
+                <!-- campground[description] groups things under campground, groups content together -->
+                <textarea class="form-control" type="text" name="campground[description]" id="description" required><%=campground.description%></textarea>
+            
+                <!-- success text for valid input of form -->
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <!-- Image -->
+            <!-- input type to select an image file -->
+            <!-- upload multiple files with this input with attribute multple -->
+            <div class="mb-3 custom-file">
+                <label class="form-label">Add More Image(s)</label>
+                <input class="form-control custom-file-input" type="file" id="image" name="image" multiple>
+                <label for="image" class="form-label custom-file-label"></label>
+
+                <!-- success text for valid input of form -->
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <!-- for each image display that image -->
+            <!-- checkbox for each image for deleting -->
+            <div class="mb-3">
+                <% campground.images.forEach(function(img, i) { %>
+                <!-- using new propert .thumbnail created in campground model to get a thumbnail of the image -->
+                <img src="<%=img.thumbnail%>" class="img-thumbnail" alt="">
+                <div class="form-check-inline">
+                    <!-- id for each checkbox is image-i where i is the index of the image in the array -->
+                    <!-- deleteImages[] is an array when we parse the body -->
+                    <!-- value is the filename which is what we will use on the server side to delete the images -->
+                    <!-- any value that is checked is added to deleteImages[] -->
+                    <input type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%=img.filename%>">
+                </div>
+                <!-- each label corresponds to the image checkbox -->
+                <label for="image-<%=i%>">Delete?</label>
+                <% } ) %> 
+            </div>
+            
+            <div class="mb-3">
+                <button class="btn btn-info">Update Campground</button>
+            </div>
+            
+        
+        </form>
+        
+        <!-- link to go back to all campgrounds -->
+        <a href="/campgrounds/<%=campground._id%>">Back To Campground</a>
+
+    </div>
+</div>

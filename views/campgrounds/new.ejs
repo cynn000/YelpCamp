@@ -1,0 +1,92 @@
+<!-- New Template to create a new campground -->
+
+<!-- access layout folder and boilerplate.ejs -->
+<%layout("layouts/boilerplate")%>
+
+<div class="row mb-3">
+    <h1 class="text-center">New Campground</h1>
+    <!-- want 6 units and in the middle so offset by 3 -->
+    <div class="col-md-6 offset-md-3">
+        <!-- this form is going to /campgrounds with a POST request -->
+        <!-- novalidate to prevent HTML browser from doing validation handling, will be doing that with Bootstrap -->
+        <!-- if we want to upload files we need to set the encoding type or enctype attribute to be multipart/form-data -->
+        <form action="/campgrounds" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+        
+            <!-- Title -->
+            <div class="mb-3">
+                <label class="form-label" for="title">Title</label>
+                <!-- campground[title] groups things under campground, groups content together -->
+                <!-- when our data is sent via POST request to our express app, -->
+                <!-- everything in the request.body will be stored under campground -->
+                <!-- required for error handling client side validation -->
+                <input class="form-control" type="text" name="campground[title]" id="title" required>
+                
+                <!-- success text for valid input of form -->
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <!-- Location -->
+            <div class="mb-3">
+                <label class="form-label" for="location">Location</label>
+                <!-- campground[location] groups things under campground, groups content together -->
+                <input class="form-control" type="text" name="campground[location]" id="location" required>
+                
+                <!-- success text for valid input of form -->
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <!-- Price -->
+            <div class="mb-3">
+                <label class="form-label" for="price">Campground Price</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="price-label">$</span>
+                    <input type="text" class="form-control" name="campground[price]" id="price" placeholder="0.00" aria-label="price" aria-describedby="price-label" required>
+                </div>
+                
+                <!-- success text for valid input of form -->
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-3">
+                <label class="form-label" for="description">Description</label>
+                <!-- campground[description] groups things under campground, groups content together -->
+                <textarea class="form-control" type="text" name="campground[description]" id="description" required></textarea>
+                
+                <!-- success text for valid input of form -->
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <!-- Image -->
+            <!-- input type to select an image file -->
+            <!-- upload multiple files with this input with attribute multple -->
+            <div class="mb-3 custom-file">
+                <label class="form-label">Image(s)</label>
+                <input class="form-control custom-file-input" type="file" id="image" name="image" multiple>
+                <label for="image" class="form-label custom-file-label"></label>
+
+                <!-- success text for valid input of form -->
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <button class="btn btn-success">Add Campground</button>
+            </div>
+        
+        </form>
+        
+        <!-- link to go back to all campgrounds -->
+        <a href="/campgrounds">All Campgrounds</a>
+    </div>
+</div>
+

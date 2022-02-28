@@ -1,0 +1,63 @@
+<!-- View for register page -->
+
+<%layout("layouts/boilerplate")%>
+
+<!-- this is how we get everything inside of htis div to be centered vertically and horizontally -->
+<div class="container d-flex justify-content-center align-items-center mb-3">
+    <!-- force into widths equal to their content-->
+    <div class="row flex-fill">
+        <!-- responsive -->
+        <!-- offset-md-3 from medium and above, have it centered, but on smaller sizes it won't be -->
+        <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <!-- image for register page -->
+                    <img src="https://images.unsplash.com/photo-1510672981848-a1c4f1cb5ccf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80"
+                        alt="" class="card-img-top" />
+                    <h5 class="card-title mt-2">Register</h5>
+                    <!-- class="validated-form" is bootstrap client side validation-->
+                    <form action="/register" method="POST" class="validated-form" novalidate>
+                        <!-- Username input-->
+                        <div class="mb-3">
+                            <label class="form-label" for="username">Username</label>
+                            <!-- required for error handling client side validation -->
+                            <input class="form-control" type="text" name="username" id="username" required autofocus>
+
+                            <!-- success text for valid input of form -->
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+
+                        <!-- Email input-->
+                        <div class="mb-3">
+                            <label class="form-label" for="email">Email</label>
+                            <!-- required for error handling client side validation -->
+                            <input class="form-control" type="email" name="email" id="email" required>
+
+                            <!-- success text for valid input of form -->
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+
+                        <!-- Password input-->
+                        <div class="mb-3">
+                            <label class="form-label" for="password">Password</label>
+                            <!-- required for error handling client side validation -->
+                            <input class="form-control" type="password" name="password" id="password" required>
+
+                            <!-- success text for valid input of form -->
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="d-grid">
+                            <button class="btn btn-success">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
