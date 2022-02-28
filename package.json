@@ -1,13 +1,14 @@
 {
-  "name": "09-yelpcamp",
+  "name": "yelpcamp",
   "version": "1.0.0",
-  "description": "",
+  "description": "Project part of Cole Steel's web development course: The Web Developer Bootcamp 2022 on Udemy.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Cynthia Nguyen",
   "license": "ISC",
   "dependencies": {
     "@mapbox/mapbox-sdk": "^0.13.2",
