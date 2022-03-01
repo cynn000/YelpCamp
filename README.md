@@ -23,7 +23,7 @@ You can visit the live application here: [https://cynn000-yelpcamp.herokuapp.com
 
 ## Built With
 
-This application was built using **JavaScript** along with **Node.js** and **Express.js** for server-side scripting. **MongoDB** was used for the databases as well as 
+This application was built using **JavaScript** along with **Node.js** and **Express** for server-side scripting. **MongoDB** was used for the databases as well as 
 **MongoDB Atlas** for cloud database services, to have our database accessible through a cloud platform as opposed to locally on our machine when in production. **Bootstrap** 
 was utilized in creating responsive and visually appealing pages. To render interactive maps and a cluster map, **MapBox** was employed. **Passport** was used for the 
 authentication of user requests. **Cloudinary**, was implemented to store the non-user images uploaded in the application, these non-user images were obtained from **Unsplash**.
