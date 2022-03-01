@@ -2,8 +2,7 @@
 
 ## Overview
 
-YelpCamp is a full-stack CRUD (Create, Read, Upate, Delete) web application that is similar to Yelp which publishes reviews about businesses but for campgrounds around 
-Canada instead.
+YelpCamp is a full-stack CRUD (Create, Read, Upate, Delete) web application that is similar to Yelp which publishes reviews about businesses but for campgrounds instead.
 
 I created this web application as part of a code-along of Colt Steele's Udemy Course: The Web Development Course 2022. 
 
