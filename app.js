@@ -42,7 +42,7 @@ const reviewRoutes = require("./routes/reviews"); // load the reviews router in 
 // dbURL is the url to connect to the cluster in mongo atlas
 // use process.env.DB_URL for deployment, production 
 // use "mongodb://localhost:27017/yelp-camp" for development
-const dbUrl = "mongodb://localhost:27017/yelp-camp";
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/yelp-camp";
 
 // connect to MongoDB. Set up connection to the database locally which is through mongodb://localhost:27017/yelp-camp
 // can use local database for development
