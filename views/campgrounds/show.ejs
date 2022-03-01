@@ -118,39 +118,51 @@
             <button class="btn btn-success">Submit</button>
         </form>
         <% } else { %> 
-            <h2 class="mt-3 mb-3">No Reviews</h2>
+            <h2 class="mt-3 mb-3">Reviews</h2>
             <p class="mt-3 mb-3">You must be logged in to leave a review!</p>
         <% } %> 
         
         <!--
-            loop over all the reviews and list them
+            if there is a current user logged, in adjust div accordingly
         -->
-        <% for (let review of campground.reviews) { %>
-        <p style="overflow: auto;">
-            <div class="card mt-3 mb-3">
-                <div class="card-body">
-                    <h5 class="card-title"><%=review.author.username%></h5>
-                    <!-- using star styles data-rating is the rating number -->
-                    <p class="starability-result" data-rating="<%=review.rating%>">
-                        <!-- does not show on page but for accessibility purposes show rating as well for screen readers -->
-                        Rated: <%=review.rating%> stars
-                    </p>
-                    <p class="card-title"><%=review.body%></p>
-    
-                    <!-- form for deleting a review 
-                         for each review we are making a separate form to delete each review
-                    -->
-                    <!-- do not want to show the delete button if you do not own the review -->
-                    <!-- if a currentUser exist (if someone is logged in) AND the review author equals the id of the current logged in user -->
-                    <% if (currentUser && review.author.equals(currentUser._id)) { %> 
-                    <form action="/campgrounds/<%=campground._id %>/reviews/<%=review._id%>?_method=DELETE" method="POST">
-                        <button class="btn btn-sm btn-danger">Delete</button>
-                    </form>
-                    <% } %> 
+        <% if (currentUser) { %>
+        <div class="mb-3" style="width: 100%; height: 350px; overflow: auto;">
+        <% } else { %> 
+        <div class="mb-3" style="width: 100%; height: 485px; overflow: auto;">
+        <% } %> 
+            <!--
+                loop over all the reviews and list them
+            -->
+            <% campground.reviews.forEach((review, i) => { %>
+                <!-- do not add margin bottom if it is the last review --> 
+                <% if (i === (campground.reviews.length - 1)) { %> 
+                <div class="card">
+                <% } else { %> 
+                <div class="card mb-3">
+                <% } %> 
+                    <div class="card-body">
+                        <h5 class="card-title"><%=review.author.username%></h5>
+                        <!-- using star styles data-rating is the rating number -->
+                        <p class="starability-result" data-rating="<%=review.rating%>">
+                            <!-- does not show on page but for accessibility purposes show rating as well for screen readers -->
+                            Rated: <%=review.rating%> stars
+                        </p>
+                        <p class="card-title"><%=review.body%></p>
+        
+                        <!-- form for deleting a review 
+                             for each review we are making a separate form to delete each review
+                        -->
+                        <!-- do not want to show the delete button if you do not own the review -->
+                        <!-- if a currentUser exist (if someone is logged in) AND the review author equals the id of the current logged in user -->
+                        <% if (currentUser && review.author.equals(currentUser._id)) { %> 
+                        <form action="/campgrounds/<%=campground._id %>/reviews/<%=review._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                        <% } %> 
+                    </div>
                 </div>
-            </div>
-        </p>
-        <% } %>
+            <% }) %> 
+        </div>
     </div>
 </div>
 
