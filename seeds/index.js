@@ -3,6 +3,7 @@
 // Need to run this file on it's own, separately from our node app, any time
 // we can to see our database. Not going to be often, only when we make changes to the model
 // or to the data.
+// originally used to populate our database with many campgrounds
 
 const mongoose = require("mongoose"); // load the mongoose module
 const cities = require("./cities"); // import the array of cities

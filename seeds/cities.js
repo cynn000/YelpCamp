@@ -1,6 +1,7 @@
 // City data set with a thousand different Canadian cities to help populate database
 // used readdata.py to obtain list of Canadian cities in correct format for this Project
 // data from https://simplemaps.com/data/canada-cities
+// originally used to populate our database with many campgrounds
 
 // exports the array with cities to be used in other file
 module.exports = [

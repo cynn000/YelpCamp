@@ -2,8 +2,6 @@
 // Project part of Cole Steel's web development course: The Web Developer Bootcamp 2022 on Udemy
 // 02-10-2022
 
-// images from https://source.unsplash.com/collection/483251
-
 /*
  .env
  don't want to be directly embedding any API credentials or secret keys right inside of our application
