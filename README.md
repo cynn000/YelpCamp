@@ -57,6 +57,6 @@ For deployment, we used **Heroku** to store and host our web application.
 
 [The Web Developer Bootcamp 2022 on Udemy](https://www.udemy.com/course/the-web-developer-bootcamp/) by Colt Steele
 
-[Unsplash](https://unsplash.com/)
+Images from [Unsplash](https://unsplash.com/)
 
-[Canadian Cities Data](https://simplemaps.com/data/canada-cities)
+Canadian Cites Data from [Simple Maps Canadian Cities](https://simplemaps.com/data/canada-cities)
