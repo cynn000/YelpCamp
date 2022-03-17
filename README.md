@@ -6,7 +6,7 @@ YelpCamp is a full-stack CRUD (Create, Read, Upate, Delete) web application that
 
 I created this web application as part of a code-along of Colt Steele's Udemy Course: The Web Development Course 2022. 
 
-You can visit the live application here: [https://cynn000-yelpcamp.herokuapp.com/](https://cynn000-yelpcamp.herokuapp.com/)
+You can visit the live application here: [cynn000-yelpcamp.herokuapp.com](https://cynn000-yelpcamp.herokuapp.com/)
 
 ## Features
 
